@@ -1,0 +1,41 @@
+--EJERCICIO_4
+
+--4.1
+
+SELECT nombre FROM peliculas;
+
+--4.2
+
+SELECT DISTINCT calificacionedad FROM peliculas;
+
+--4.3
+
+SELECT * FROM peliculas WHERE calificacionedad IS null;
+
+--4.4
+
+SELECT * FROM salas WHERE pelicula IS NULL; 
+
+--4.5
+
+SELECT * FROM salas LEFT JOIN peliculas on salas.pelicula=peliculas.codigo;
+
+--4.6
+
+SELECT * FROM peliculas RIGHT JOIN salas on salas.pelicula=peliculas.codigo;
+
+--4.7
+
+SELECT nombre FROM peliculas WHERE codigo IN (SELECT pelicula FROM salas WHERE pelicula IS NOT NULL);
+
+--4.8
+
+INSERT INTO peliculas VALUES (11, 'Uno, Dos, Tres', 7)
+
+--4.9
+
+UPDATE peliculas SET calificacionedad='no recomendables para menores de 13 años' WHERE calificacionedad IS NULL;
+
+--4.10
+
+DELETE FROM salas WHERE pelicula IN (SELECT codigo FROM peliculas WHERE calificacionedad='G');
